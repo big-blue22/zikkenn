@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ============================================================
+   ダイエットアプリ MVP — デザインシステム
+   ============================================================ */
+
+@theme inline {
+  /* プライマリ: 温かみのあるオレンジ */
+  --color-primary: #FF6B35;
+  --color-primary-light: #FF8F66;
+  --color-primary-dark: #E55A2B;
+
+  /* セカンダリ: グリーン（成功・達成） */
+  --color-secondary: #2EC4B6;
+  --color-secondary-light: #5DD9CE;
+
+  /* 背景・カード */
+  --color-background: #FAFAFA;
+  --color-card: #FFFFFF;
+
+  /* テキスト */
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #6B7280;
+
+  /* セマンティック */
+  --color-success: #06D6A0;
+  --color-warning: #FFD166;
+  --color-danger: #E63946;
+
+  /* フォント */
+  --font-sans: 'Noto Sans JP', sans-serif;
+}
+
+:root {
+  --bottom-nav-height: 72px;
+}
+
+/* ---- ボディ ---- */
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+/* ---- モバイルファースト コンテナ ---- */
+.app-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  position: relative;
+  padding-bottom: var(--bottom-nav-height);
+}
+
+/* ---- ページ内容 ---- */
+.page-content {
+  padding: 16px;
+  padding-bottom: calc(var(--bottom-nav-height) + 16px);
+}
+
+/* ---- タップ可能要素は最低 44px ---- */
+button, a, [role="button"] {
+  min-height: 44px;
+}
+
+/* ---- スクロールバー非表示（モバイル風） ---- */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---- カスタムアニメーション ---- */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-slide-in-down {
+  animation: slideInDown 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-pulse-gentle {
+  animation: pulse 2s ease-in-out infinite;
+}
